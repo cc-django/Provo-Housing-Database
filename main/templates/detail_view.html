@@ -19,64 +19,169 @@
 		-->
 		<div class="row">
 
-			<div class="col-xs-8">
-				<img src="/{{ listing.upload_image }}" alt="your image" style="        box-shadow: 2px 3px 4px;
-							border: 2px solid rgb(11, 11, 11);
-							margin: -15px;
-							width: 45%;">
-				<p class="adeets">
-					<br>
-					<p id="address">
-						{{ listing.address }}
-						<br>{{ listing.city }}, {{ listing.state }}</p>
+			<div class="col-xs-12 col-sm-3">
+
+					<img src="/{{ listing.upload_image }}" alt="your image" style="box-shadow: 2px 3px 4px; border: 2px solid rgb(11, 11, 11); margin: -41px;width: 500px; height:402px; ">
+
+			</div>
+
+
+			<div class="col-xs-12 col-sm-4">
+
+				<p id="address">
+					{{ listing.address }}<br>{{ listing.city }}, {{ listing.state }}
 				</p>
 
-				<hr class="hr"></div>
-			<div class="col-xs-4">
-				<img src="{% static "profile.png" %}" alt="" style="    border: 1px solid;
-	border-radius: 115px;
-	margin-top: 20px;
-	width: 25%;
-	margin-left: -60px;"	>
-				<p class="deets" id="nam">{{ listing.name }}</p>
 			</div>
-			<div class="col-xs-8">
-				<p class="deets" id="price">${{ listing.selling_price }}</p>
-				<img src="{% static "home.png" %}" alt="" id="ic">
-				<p class="deets" id="room">{{ listing.room_type }}</p>
-				<img src="{% static "contract.png" %}" alt="" id="icontract">
-				<p class="deets" id="contract">{{ listing.contract_length }}</p>
-				<img src="{% static "furnish.png" %}" alt="" id="ifurnish">
-				<p class="deets" id="furnish">{{ listing.furnishings_type }}</p>
-				<p class="deets" id="available">{{ listing.availability_date }}</p>
+		
+
+
+
+					
+
+		</div>
+
+			<hr class="hr">
+		
+		<div class="row" style="margin-top: -20px; margin-bottom: -15px; background: #F4F4F4;margin-right:-50px;">
+			 	
+				<div class="col-xs-12 col-sm-2">
+					<p class="deets" id="price">${{ listing.selling_price }}</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 ficon">
+					<p><img src="{% static "icons/house.png" %}" alt="" id="ic"></p>
+					<p class="deets" id="room">{{ listing.room_type }}</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 icons">
+					<p><img src="{% static "icons/paper.png" %}" alt="" id="icontract"></p>
+					<p class="deets" id="contract">{{ listing.contract_length }}</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 icons">
+					<p><img src="{% static "icons/bed.png" %}" alt="" id="ifurnish"></p>
+					<p class="deets" id="furnish">{{ listing.furnishings_type }}</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 icons">
+					<p><img src="{% static "icons/roommate.png" %}" alt="" id="ifurnish"></p>
+					<p class="deets" id="furnish">{{ listing.roommates}} roommates</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 icons">
+					<p><img src="{% static "icons/byu.png" %}" alt="" id="ifurnish"></p>
+					<p class="deets" id="furnish">{% if listing.BYU_housing %}BYU Housing {% else %}Non BYU Housing {% endif %}</p>
+				</div>
+
+				<div class="col-xs-4 col-sm-1 icons">
+					<p><img src="{% static "icons/gender.png" %}" alt="" id="ifurnish"></p>
+					<p class="deets" id="furnish">{% if listing.gender_choices == 'M' %}Male {% elif listing.gender_choices == 'F' %}Female {% endif %}</p>
+				</div>
+
+				<div class="col-xs-12 col-sm-2" style="margin-left: 40px; width: 400px;">
+					<p class="deets" id="available">{{ listing.availability_date }}</p>
+				</div>
+
+		</div>
+				
 				<hr class="hrs">
+				
+		<div class="row">
+			
+			<div class="col-xs-12 col-sm-2" style="margin-right: -40px;margin-left:50px; margin-top: -59px;">
+				
+				<div class="deets" id="amen">
+					Amenities:  </br>
+				        			</br>
+				        			<img src="{% static "icons/Kitchen.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/internet.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/tv.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/cable.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/heat.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/AC.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/washer.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/dryer.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/parking.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/wifi.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/dog.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/smoking.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/pool.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/hottub.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/gym.png" %}" alt="" class="amenities"></br></br>
+									<img src="{% static "icons/fireplace.png" %}" alt="" class="amenities">
+
+				<div style="margin-top: -784px; width: 191px;" >
+						<p>
+				            {% if listing.amenity.all %}
+							{% for amenity in listing.amenity.all %}
+							<p class="word">{{ amenity.amenity }}</p>
+							</br>
+							{% endfor %}
+							{% else %}
+		   					no amenities
+							{% endif %}
+						</p>
+				</div>
+
+
+				</div>
+				
+				
+			</div>
+
+
+			<div class="col-xs-12 col-sm-10" style="border: 1px solid;border-radius: 10px;background: #F4F4F4;width:1086px;">
 				<p class="deets" id="descrip"> <u>About this Listing</u>
+					</br>
+					</br>{{ listing.description }}</p>
+				
+
+			</div>
+			
+			<div class="col-xs-12 col-sm-10" style="border-left: 3px solid;height: 319px;">
+
+				<img src="{% static "profile.png" %}" alt="" style="border: 1px solid;border-radius: 115px;margin-top: 20px;width: 15%;margin-left:44px; background:gainsboro;">
+				
+				<div class="col-xs-12" style="margin-top:-100px;">
+					<p class="deets" id="nam">
+						{{ listing.name }}
+					</p>
 					<br>
-					<br>{{ listing.description }}</p>
+					<br>
+
+					<div class="boxes">
+						<img src="{% static "icons/phone.png" %}" alt="" id="cont"><p id="phone">801-555-1234</p> </br>
+						<img src="{% static "icons/email.png" %}" alt="" id="cont"><p id="email">myemail@email.com</p></br>
+						<img src="{% static "icons/write.png" %}" alt="" id="cont"><p id="mensage">Send Marcus a message</p>	
+					</div>
+
+					
+				</div>
+				
+
+
+			</div>
+
+
+		</div>
+				
+				
 
 				<br>
 				<br>
 				<br>
 				<br>
+{{ listing.roommates}}{{ listing.gender_choices }}{{ listing.building_type }}{{ listing.BYU_housing }}{{ listing.apartment_complex }}
+				
+				<p class="deets">Number of Roommates:</p>
+				<p class="deets">Roommate Gender:</p>
 
-				<p class="deets" id="amen">
-					Amenities:
-			{% if listing.amenity.all %}
-				{% for amenity in listing.amenity.all %}
-			{{ amenity.amenity }}
-				</br>
-				{% endfor %}
-			{% else %}
-			   no amenities
-			{% endif %}
-				<p class="deets">Number of Roommates:{{ listing.roommates}}</p>
-				<p class="deets">Roommate Gender:{{ listing.gender_choices }}</p>
+				<p class="deets">Building Type:</p>
 
-				<p class="deets">Building Type:{{ listing.building_type }}</p>
-
-				<p class="deets">BYU Housing: {{ listing.BYU_housing }}</p>
-				<p class="deets">Is it an Apartment Complex: {{ listing.apartment_complex }}</p>
-				<p class="deets">Complex Name: {{ listing.complex_name }}</p>
+				<p class="deets">BYU Housing: </p>
+				<p class="deets">Is it an Apartment Complex: </p>
+				<p class="deets">Complex Name:{{ listing.complex_name }} </p>
 				<p class="deets">Distance from BYU: {{ listing.distance_from_BYU  }}</p>
 				<p class="deets">Distance from UVU: {{ listing.distance_from_UVU  }}</p>
 

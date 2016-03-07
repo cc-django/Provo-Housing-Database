@@ -10,58 +10,131 @@ html, body {
   }
 }
 
+.boxes {
+  margin-left: 200px;
+    border: 1px solid;
+    width: 400px;
+    height: 165px;
+    padding: 21px;
+}
+#phone {
+  margin-left: -229px;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: -43px;
+    margin-bottom: 4px;
+}
+#email {
+margin-left: -192px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: -39px;
+    margin-bottom: 4px;
+    text-transform: lowercase;
+}
+#mensage {
+  margin-left: -163px;
+    font-size: 16px;
+    margin-top: -39px;
+    font-weight: 500;
+    text-transform: inherit;
+}
+#cont {
+      width: 35px;
+    margin-left: -70px;
+    margin-top: -4px;
+    margin-bottom: 9px;
+}
+#contact {
+  margin-left: 141px;
+    margin-top: -15px;
+}
+.other {
+  margin-left: 20px;
+}
+.word {
+  font-size: 15px;
+    text-transform: capitalize;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-align: justify;
+    margin-left: 39px;
+    margin-bottom: 7px;
+}
+.amenities {
+    width: 28px;
+}
+
+#amen {
+  width: 217px;
+    border: solid 1px;
+    border-radius: 5px;
+    padding: 17px;
+    margin-top: 60px;
+    margin-left: 12px;
+    background: #F4F4F4;
+    font-size: 16px;
+    text-transform: none;
+    text-align: justify;
+}
+
+.ficon {
+  margin-top: -12px;
+  margin-left: 96px;
+  margin-right: -39px;
+}
+.icons {
+  margin-top: -5px;
+  margin-left: 15px;
+}
+
 #nam {
-margin-left: 85px;
-    margin-top: -87px;
+margin-left: 27%;
+    margin-top: 25px;
     font-size: 30px;
   }
 .hr {
-  margin-right: -53%;
-    margin-left: -12px;
-    margin-top: 78px;
-    margin-bottom: 20px;
+    margin-right: -200px;
+    margin-left: -200px;
+    margin-top: 42px;
     border: 0;
     border-top: 2px solid rgba(9, 9, 9, 0.36);
 }
 .hrs {
   margin-right: -53%;
     margin-left: -12px;
-    margin-top: 45px;
+    margin-top: 15px;
     margin-bottom: 20px;
     border: 0;
     border-top: 2px solid rgba(9, 9, 9, 0.36);
 }
 #ic {
-margin-left: 320px;
-margin-top: -229px;
+    margin-top: 40px;
 }
 #icontract {
-     width: 52px;
-    margin-left: 461px;
-    margin-top: -173px;
+    width: 52px;
+    margin-top: 33px;
 
 }
 #contract {
-  margin-left: 434px;
-    margin-top: -57px;
-    font-size: 19px;
+  text-align: center;
+  font-size: 13px;
+    font-weight: 500;
 }
 #ifurnish {
    width: 55px;
-    margin-left: 610px;
-    margin-top: -173px;
+   margin-top: 30px;
 
 }
 #furnish {
-      margin-left: 585px;
-    margin-top: -57px;
-    font-size: 19px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
 }
 #available {
-    margin-right: -400px;
     float: right;
     font-size: 50px;
-    margin-top: -88px;
+    margin-top: 38px;
 }
 .adeets {
   margin-top: -120px;
@@ -77,27 +150,36 @@ margin-top: -229px;
 
 #price {
     width: 100%;
-    font-size: 115px;
-    text-align: left;
-    margin-top: -30px;
+    font-size: 75px;
+    text-align: center;
+    margin-top: 17px;
+    margin-bottom: 0px;
+    margin-left: 50px;
   }
 #address {
-     text-align: left;
-    margin-left: 50%;
-    margin-top: -15.34%;
+    text-align: left;
+    margin-left: 12%;
+    margin-top: 55px;
     font-size: 60px;
 
 }
 #room {
-      margin-top: -85px;
-    margin-left: 304px;
-    font-size: 19px;
+    margin-top: 21px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
 }
 #bullet {
   font-size: 20px;
 }
 #descrip {
-  margin-top: 60px;
+        margin-right: 50px;
+    margin-top: 60px;
+    margin-left: 34px;
+    background: #F4F4F4;
+    font-size: 16px;
+    text-transform: none;
+    text-align: justify;
 }
 .row {
   margin-right:-22px;
@@ -328,6 +410,7 @@ p {
 }
 
 .border {
+  overflow: auto;
   border: 1px solid;
   height:650px;
 }
