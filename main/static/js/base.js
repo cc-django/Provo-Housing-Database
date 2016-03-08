@@ -6,6 +6,8 @@
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 $(document).ready(function(){
+	$("#pac-input").hide();
+	
 	$('#listview').hide();
 	$('.list').click(function(){
 		$('#map').hide();
@@ -53,29 +55,6 @@ $(document).ready(function(){
 				reader.readAsDataURL($(this).files[0]);
 			}
 		})
-$("#search").keyup(function () {
-	var searchTerm = $("#search").val();
-	var addresses = $("#listings").find(".address");
-
-	$.extend($.expr[':'], {
-		'containsi': function (elem, i, match, array) {
-			return (elem.textContent || elem.innerText || '').toLowerCase()
-				.indexOf((match[3] || "").toLowerCase()) >= 0;
-		}
-	});
-
-	var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
-
-	$("#listings .address").not(":containsi('" + searchSplit + "')").each(function (e) {
-		$(this).parent().parent().addClass('hidden');
-		
-//			console.log($(this).parent());
-	});
-
-	$("#listings .address:containsi('" + searchSplit + "')").each(function (e) {
-		$(this).parent().parent().removeClass('hidden');
-	});
-});
 
 
 function initMap() {

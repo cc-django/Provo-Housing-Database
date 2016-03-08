@@ -50,8 +50,10 @@
 				<input id="partial-furnished" type="radio" name="furnishings" value="not furnished"> Partially Furnished<br>
 				<input id="not-furnished" type="radio" name="furnishings" value="not furnished"> Not Furnished
 			</form>
+<!--
 			<ul>Availability Date</ul>
 				<input id="available-date" type="date">
+-->
 			<ul>Apt/House</ul>
 			<form>
 				<input id="apartment-type" type="radio" name="type" value="apartment"> Apartment<br>
@@ -91,7 +93,7 @@
 							{% for house in house_list %}
 								<div class="houseListing">
 								<a
-									class="complex-listing"
+									class="house-listing"
 									data-distancebyu="{{house.distance_from_BYU}}"
 									data-name="{{house.name}}"
 									data-distanceuvu="{{house.distance_from_UVU}}"
@@ -127,7 +129,7 @@
 								<div class="listing" id="complex{{ complex.id }}">
 								{% for listing in complex.listing_set.all %}
 									<a
-									class="individual-listing"
+									class="apartment-listing"
 									data-distancebyu="{{listing.distance_from_BYU}}"
 									data-name="{{listing.name}}"
 									data-distanceuvu="{{listing.distance_from_UVU}}"

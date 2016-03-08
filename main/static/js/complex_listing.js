@@ -111,14 +111,14 @@ $(document).ready(function(){
 	});
 
 ////----------------------------------------the function below turns a date in a string into a Date object
-	function parseDate(input) {
-		var parts = input.match(/(\d+)/g);
-		return new Date(parts[0], parts[1]-1, parts[2]);
-	};
+//	function parseDate(input) {
+//		var parts = input.match(/(\d+)/g);
+//		return new Date(parts[0], parts[1]-1, parts[2]);
+//	};
 	
 	function listingFilter(){
 
-		var availableDateChoice = ""
+//		var availableDateChoice = ""
 		
 		var searchTerm = $("#search").val();
 		var distanceSliderBYU = $("#distanceSliderBYU").val();
@@ -175,15 +175,15 @@ $(document).ready(function(){
 		} else if ($("#house-type:checked").length > 0){
 			buildingTypeChoice = 'House'
 		}
-		var availableDateChoice = $("#available-date").val();
-		if (availableDateChoice === ""){
-			availableDateChoice =  new Date();
-		} else {
-		availableDateChoice = parseDate(availableDateChoice)
-		}
-		availableDateChoice = availableDateChoice.getTime();
+//		var availableDateChoice = $("#available-date").val();
+//		if (availableDateChoice === ""){
+//			availableDateChoice =  new Date();
+//		} else {
+//		availableDateChoice = parseDate(availableDateChoice)
+//		}
+//		availableDateChoice = availableDateChoice.getTime();
 
-		var apartmentListing = $(".individual-listing");
+		var apartmentListing = $(".apartment-listing");
 		
 		apartmentListing.each(function(i){
 			var distanceBYU = $(this)[0].dataset.distancebyu
@@ -196,13 +196,10 @@ $(document).ready(function(){
 			var contractLength = $(this)[0].dataset.contractlength
 			var furnishingType = $(this)[0].dataset.furnishingtype
 			var buildingType = $(this)[0].dataset.buildingtype
-			var availableDate = $(this)[0].dataset.availabledate
-//			console.log("availableDate: " + availableDate);
-			availableDate = parseDate(availableDate)
-			availableDate = availableDate.getTime();
-//			console.log(availableDate);
+//			var availableDate = $(this)[0].dataset.availabledate
+//			availableDate = parseDate(availableDate)
+//			availableDate = availableDate.getTime();
 
-//			console.log(listingName);
 			if ((Number(distanceBYU) < Number(distanceSliderBYU))
 				&& (listingName.toLowerCase().indexOf(searchTerm.toLowerCase())>-1)
 				&& (Number(distanceUVU) < Number(distanceSliderUVU))
@@ -213,7 +210,7 @@ $(document).ready(function(){
 				&& (contractLength === contractLengthChoice || contractLengthChoice === "")
 				&& (furnishingType === furnishingChoice || furnishingChoice === "")
 				&& (buildingType === buildingTypeChoice || buildingTypeChoice === "")
-				&& (Number(availableDate) <= Number(availableDateChoice))
+//				&& (Number(availableDate) <= Number(availableDateChoice))
 				){
 				$(this).show();
 				$(this).parent().parent().show();
@@ -231,10 +228,9 @@ $(document).ready(function(){
 	function complexElimination(){
 
 		$(".complex").each(function(i){
-			var complexItems = $(this).find(".individual-listing");
+			var complexItems = $(this).find(".apartment-listing");
 			var priorListingIsVisible = false
 			complexItems.each(function(index){
-//				console.log('some kind of success')
 				if ($(this).is(":visible")){
 					priorListingIsVisible = true
 					return
@@ -243,8 +239,6 @@ $(document).ready(function(){
 						$(this).parent().parent().hide();
 					}
 				}
-//			console.log('items:'+complexItems.length);
-//			console.log('index: '+index);
 			
 			});
 		});
