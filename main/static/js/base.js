@@ -33,8 +33,8 @@ $(document).ready(function(){
 		$('#div_id_city').toggle(this.checked);
 		$('#div_id_state').toggle(this.checked);
 		$('#div_id_complex_name').toggle(this.checked);
-	}) 
-})
+	});
+});
 
 	
 
@@ -92,13 +92,10 @@ function initMap() {
 	var geocoder = new google.maps.Geocoder();
 	$.get("http://127.0.0.1:8000/housing_api", function (data, status) {
 		var x;
-		// console.log(data)
 		for (x = 0; x < data.length; x++) {
 
 
 			geocoder = new google.maps.Geocoder();
-			// console.log('data:'+data[x].fields.address)
-			// console.log("x= "+x)
 			function codeAddress(data, x) {
 				console.log('-----------------')
 				if (data[x].model == 'main.complexname') {
@@ -108,7 +105,6 @@ function initMap() {
 				}
 
 				console.log('addy:' + address)
-					// document.getElementById("address").value;
 				console.log('geo  ' + geocoder)
 				location.LatLng
 				geocoder.geocode({

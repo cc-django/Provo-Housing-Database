@@ -176,16 +176,16 @@ $(document).ready(function(){
 			buildingTypeChoice = 'House'
 		}
 		var availableDateChoice = $("#available-date").val();
-		if (availableDateChoice == ""){
+		if (availableDateChoice === ""){
 			availableDateChoice =  new Date();
 		} else {
 		availableDateChoice = parseDate(availableDateChoice)
 		}
 		availableDateChoice = availableDateChoice.getTime();
 
-		var aptmntcomplex = $(".individual-listing");
+		var apartmentListing = $(".individual-listing");
 		
-		aptmntcomplex.each(function(i){
+		apartmentListing.each(function(i){
 			var distanceBYU = $(this)[0].dataset.distancebyu
 			var listingName = $(this)[0].dataset.name
 			var distanceUVU = $(this)[0].dataset.distanceuvu
@@ -197,28 +197,29 @@ $(document).ready(function(){
 			var furnishingType = $(this)[0].dataset.furnishingtype
 			var buildingType = $(this)[0].dataset.buildingtype
 			var availableDate = $(this)[0].dataset.availabledate
+//			console.log("availableDate: " + availableDate);
 			availableDate = parseDate(availableDate)
 			availableDate = availableDate.getTime();
-			console.log(availableDate);
+//			console.log(availableDate);
 
-			console.log(listingName);
+//			console.log(listingName);
 			if ((Number(distanceBYU) < Number(distanceSliderBYU))
 				&& (listingName.toLowerCase().indexOf(searchTerm.toLowerCase())>-1)
 				&& (Number(distanceUVU) < Number(distanceSliderUVU))
 				&& (Number(listingPrice) < Number(priceRange))
 				&& (Number(roomMates) < Number(roommates))
-				&& (gender == genderChoice || genderChoice == "")
-				&& (roomType == roomTypeChoice || roomTypeChoice == "")
-				&& (contractLength == contractLengthChoice || contractLengthChoice == "")
-				&& (furnishingType == furnishingChoice || furnishingChoice == "")
-				&& (buildingType == buildingTypeChoice || buildingTypeChoice == "")
-				&& (Number(availableDate) >= Number(availableDateChoice))
+				&& (gender === genderChoice || genderChoice === "")
+				&& (roomType === roomTypeChoice || roomTypeChoice === "")
+				&& (contractLength === contractLengthChoice || contractLengthChoice === "")
+				&& (furnishingType === furnishingChoice || furnishingChoice === "")
+				&& (buildingType === buildingTypeChoice || buildingTypeChoice === "")
+				&& (Number(availableDate) <= Number(availableDateChoice))
 				){
-				$(this).show()
-				$(this).parent().parent().show()
+				$(this).show();
+				$(this).parent().parent().show();
 			} else {
-				$(this).hide()
-				complexElimination()
+				$(this).hide();
+				complexElimination();
 			
 			}
 		});
@@ -233,17 +234,17 @@ $(document).ready(function(){
 			var complexItems = $(this).find(".individual-listing");
 			var priorListingIsVisible = false
 			complexItems.each(function(index){
-				console.log('some kind of success')
+//				console.log('some kind of success')
 				if ($(this).is(":visible")){
 					priorListingIsVisible = true
 					return
 				} else {
-					if (priorListingIsVisible == false){
+					if (priorListingIsVisible === false){
 						$(this).parent().parent().hide();
 					}
 				}
-			console.log('items:'+complexItems.length);
-			console.log('index: '+index);
+//			console.log('items:'+complexItems.length);
+//			console.log('index: '+index);
 			
 			});
 		});
