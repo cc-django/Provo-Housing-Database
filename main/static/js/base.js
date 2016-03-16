@@ -6,6 +6,8 @@
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 $(document).ready(function(){
+	$("#pac-input").hide();
+	
 	$('#listview').hide();
 	$('.list').click(function(){
 		$('#map').hide();
@@ -17,12 +19,12 @@ $(document).ready(function(){
 		$('#listview').fadeOut('fast');
 	});
 
-	$('.list').hover(function(){
-		$
-	});
+	//	$('.list').hover(function () {
+	//	});
 
-	$('.complex').click(function(){
-		$(this).next().fadeIn('fast');
+	$('.complex').click(function () {
+		// console.log('test');
+		$(this).find(".listing").fadeIn('fast');
 	})
 
 	$('#div_id_address').hide();
@@ -33,8 +35,8 @@ $(document).ready(function(){
 		$('#div_id_city').toggle(this.checked);
 		$('#div_id_state').toggle(this.checked);
 		$('#div_id_complex_name').toggle(this.checked);
-	}) 
-})
+	});
+});
 
 	
 
@@ -53,30 +55,12 @@ $(document).ready(function(){
 				reader.readAsDataURL($(this).files[0]);
 			}
 		})
-$("#search").keyup(function () {
-	var searchTerm = $("#search").val();
-	var addresses = $("#listings").find(".address");
 
-	$.extend($.expr[':'], {
-		'containsi': function (elem, i, match, array) {
-			return (elem.textContent || elem.innerText || '').toLowerCase()
-				.indexOf((match[3] || "").toLowerCase()) >= 0;
-		}
+
+
+
 	});
 
-	var searchSplit = searchTerm.replace(/ /g, "'):containsi('");
-
-	$("#listings .address").not(":containsi('" + searchSplit + "')").each(function (e) {
-		$(this).parent().parent().addClass('hidden');
-		
-//			console.log($(this).parent());
-	});
-
-	$("#listings .address:containsi('" + searchSplit + "')").each(function (e) {
-		$(this).parent().parent().removeClass('hidden');
-	});
-
-});
 
 
 
