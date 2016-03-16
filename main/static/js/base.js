@@ -127,7 +127,7 @@ function codeAddress(data, x, map)
 		({
 				map: map, 
 				position: point,
-				url: 'http://127.0.0.1:8000/single_complex/'+data[x].pk,
+				url: 'http://localhost/single_complex/'+data[x].pk,
 				title:data[x].fields.name,
 				zIndex: 10
 
@@ -141,7 +141,7 @@ function codeAddress(data, x, map)
 				icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
 				map: map, 
 				position: point,
-				url: 'http://127.0.0.1:8000/listing/'+data[x].pk,
+				url: 'http://localhost/listing/'+data[x].pk,
 		}); 	
 	}
 	
