@@ -117,12 +117,10 @@ class Listing(models.Model):
 
 		gmaps = googlemaps.Client(key=local_GoogleAPI_key)
 		latlng = gmaps.geocode(full_address)
-		print "88888"
-		print latlng
-		print "88888"
+
 		self.latitude = latlng[0]['geometry']['location']['lat'] 
 		self.longitude = latlng[0]['geometry']['location']['lng'] 
-		print self.longitude
+
 	
 		googleAPI_dict_BYU = gmaps.distance_matrix((full_address), "Brigham Young University, Provo, UT 84602" )
 		googleAPI_dict_UVU = gmaps.distance_matrix((full_address), "Utah Valley University, 800 West University Parkway, Orem, UT 84058" )
