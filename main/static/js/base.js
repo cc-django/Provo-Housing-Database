@@ -5,7 +5,8 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-$(document).ready(function(){
+$(document).ready(function()
+{
 	$("#pac-input").hide();
 	
 	$('#listview').hide();
@@ -41,11 +42,14 @@ $(document).ready(function(){
 	
 
 
- $('#id_upload_image').change(function(){
-			if ($(this).files && $(this).files[0]) {
+$('#id_upload_image').change(function()
+{
+			if ($(this).files && $(this).files[0]) 
+			{
 				var reader = new FileReader();
 
-				reader.onload = function (e) {
+				reader.onload = function (e) 
+				{
 					$('#id_upload_image')
 						.attr('src', e.target.result)
 						.width(150)
@@ -54,12 +58,12 @@ $(document).ready(function(){
 
 				reader.readAsDataURL($(this).files[0]);
 			}
-		})
+});
 
 
 
 
-	});
+
 
 
 
@@ -87,15 +91,33 @@ function initMap()
 
 	$.get("http://localhost:8000/housing_api", function(data, status)
 	{
+		
 		for (var x=0;x < data.length; x++) 
 		{
-			google.maps.event.addDomListener(window, 'load', codeAddress(data, x, map))
+
+			google.maps.event.addDomListener(window, 'load', addMarkers(data, x, map, markers))
 		}
 	});//close get housing_api
+
+	map.addListener("click",function(event)
+	{
+		console.log(event)
+	})
+}
+var markers = {};
+function hideMarkers(id, markers)
+{
+	var marker = markers[id]
+	marker.setVisible(false);
+}
+function showMarkers(id, markers)
+{
+	var marker = markers[id]
+	marker.setVisible(true);
 }
 
 
-function codeAddress(data, x, map) 
+function addMarkers(data, x, map, markers) 
 {
 	latitude = data[x].fields.latitude
 	longitude = data[x].fields.longitude
@@ -116,7 +138,7 @@ function codeAddress(data, x, map)
 				zIndex: 10
 
 		}); 
-
+		markers[data[x].fields.name] = marker;
 	} 
 	else 
 	{
@@ -126,19 +148,22 @@ function codeAddress(data, x, map)
 				map: map,
 				position: point,
 				url: 'http://localhost:8000/listing/'+data[x].pk,
+				title:data[x].fields.name,
 				zIndex: 10
 		}); 	
+				markers[data[x].fields.name] = marker;
 	}
-	
-
 
 
 	google.maps.event.addListener(marker, 'click', function() 
 	{
-		window.location.href = marker.url;
+		console.log(marker.title)
+		hideMarkers(marker.title, markers)
+
+
+		// window.location.href = marker.url;
 	});
-	
-};
+}; //end addMarkers()
 
 
 
