@@ -117,30 +117,30 @@ function showMarkers(id, markers)
 }
 
 
-function addMarkers(data, x, map, markers) 
+function addMarkers(data, x, map, markers)
 {
 	latitude = data[x].fields.latitude
 	longitude = data[x].fields.longitude
-	var point = {lat: latitude, lng: longitude}	
+	var point = {lat: latitude, lng: longitude}
 	console.log(point)
 	console.log(x)
 
 
-	if (data[x].model == 'main.complexname') 
+	if (data[x].model == 'main.complexname')
 	{
 		var complex_name = data[x].fields.name
 		var marker = new google.maps.Marker
 		({
-				map: map, 
+				map: map,
 				position: point,
 				url: 'http://localhost:8000/single_complex/'+data[x].pk,
 				title:data[x].fields.name,
 				zIndex: 10
 
-		}); 
+		});
 		markers[data[x].fields.name] = marker;
-	} 
-	else 
+	}
+	else
 	{
 		var marker = new google.maps.Marker
 		({
@@ -150,7 +150,7 @@ function addMarkers(data, x, map, markers)
 				url: 'http://localhost:8000/listing/'+data[x].pk,
 				title:data[x].fields.name,
 				zIndex: 10
-		}); 	
+		});
 				markers[data[x].fields.name] = marker;
 	}
 
@@ -158,10 +158,10 @@ function addMarkers(data, x, map, markers)
 	google.maps.event.addListener(marker, 'click', function() 
 	{
 		console.log(marker.title)
-		hideMarkers(marker.title, markers)
+//		hideMarkers(marker.title, markers)
 
 
-		// window.location.href = marker.url;
+		window.location.href = marker.url;
 	});
 }; //end addMarkers()
 
