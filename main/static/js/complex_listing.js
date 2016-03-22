@@ -213,11 +213,11 @@ $(document).ready(function(){
 //				&& (Number(availableDate) <= Number(availableDateChoice))
 				){
 				$(this).show();
-				showMarkers(listingName, window.markers)
+//				showMarkers(listingName, window.markers)
 				$(this).parent().parent().show();
 			} else {
 				$(this).hide();
-				hideMarkers(listingName, window.markers)
+//				hideMarkers(listingName, window.markers)
 				complexElimination();
 			
 			}
