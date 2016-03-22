@@ -158,10 +158,7 @@ function addMarkers(data, x, map, markers)
 	google.maps.event.addListener(marker, 'click', function() 
 	{
 		console.log(marker.title)
-		hideMarkers(marker.title, markers)
-
-
-		// window.location.href = marker.url;
+		window.location.href = marker.url;
 	});
 }; //end addMarkers()
 
