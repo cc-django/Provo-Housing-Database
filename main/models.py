@@ -50,6 +50,7 @@ class Listing(models.Model):
 	SUMMER_FALL = 'Summer/Fall'
 	FULL_YEAR = 'Full Year'
 	OTHER = 'Other'
+	NO_CONTRACT = 'No Contract'
 	CONTRACT_LENGTH = (
 		(FALL, 'Fall'),
 		(SUMMER, 'Summer'),
@@ -59,6 +60,7 @@ class Listing(models.Model):
 		(SUMMER_FALL, 'Summer/Fall'),
 		(FULL_YEAR, 'Full Year'),
 		(OTHER, 'Other'),
+		(NO_CONTRACT, 'No Contract'),
 		)
 	contract_length = models.CharField(max_length=15, choices=CONTRACT_LENGTH, default=FALL_WINTER)
 	

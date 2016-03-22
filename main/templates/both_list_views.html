@@ -13,60 +13,56 @@
 				<input id="search" class="search" placeholder="Search" />
 
 			<ul>Distance to BYU</ul>
-			  
-			  <input type="range" min="0" max="25" value="1" onchange=""/>
-			  <span id="range"></span>
-
-
+				<input id="distanceSliderBYU" type="range" min="0" max="15" value="15"/>
 			<ul>Distance to UVU</ul>
-			  <input type="range" min="0" max="25" value="1"/>
+				<input id="distanceSliderUVU" type="range" min="0" max="15" value="15"/>
 			<ul>Price Range</ul>
-			  <input type="range" min="50" max="2500" value="300"/>
+				<input id="priceRange" type="range" min="50" max="2500" value="2500"/>
 			<ul># of Roommates</ul>
-			  <input type="range" min="0" max="25" value="1"/>
-			<ul>Roommate Gender</ul>
-			  <form>
-			    <input type="checkbox"  value="male"> Male<br>
-				<input type="checkbox"  value="female"> Female <br>
-				<input type="checkbox"  value="mixed"> Mixed
-			  </form>
+				<input id="roommates" type="range" min="0" max="20" value="20"/>
+			<ul>Housing Gender</ul>
+			<form>
+				<input id="male" type="radio" name="gender" value="male"> Male<br>
+				<input id="female" type="radio" name="gender" value="female"> Female <br>
+				<input id="other" type="radio" name="gender" value="other"> Other
+			</form>
 			<ul>Shared/Private</ul>
 			<form>
-			    <input type="checkbox"  value="private"> Private<br>
-				<input type="checkbox"  value="shared"> Shared
-			  </form>
+				<input id="private" type="radio" name="room" value="private"> Private<br>
+				<input id="shared" type="radio" name="room" value="shared"> Shared<br>
+				<input id="married" type="radio" name="room" value="married"> Married
+			</form>
 			<ul>Contract Length</ul>
 			<form>
-			    <input type="checkbox"  value="fall/winter"> Fall/Winter <br>
-				<input type="checkbox"  value="full year"> Full Year <br>
-				<input type="checkbox"  value="winter/summer"> Winter/Summer <br>
-				<input type="checkbox"  value="summer/fall"> Summer/Fall <br>
-				<input type="checkbox"  value="fall"> Fall <br>
-				<input type="checkbox"  value="summer"> Summer <br>
-				<input type="checkbox"  value="winter"> Winter <br>
-				<input type="checkbox"  value="no contract"> No Contract <br>
-				<input type="checkbox"  value="other"> Other
-			  </form>
+				<input id="fall-winter" type="radio" name="contract" value="fall/winter"> Fall/Winter <br>
+				<input id="full-year" type="radio" name="contract" value="full year"> Full Year <br>
+				<input id="winter-summer" type="radio" name="contract" value="winter/summer"> Winter/Summer <br>
+				<input id="summer-Fall" type="radio" name="contract" value="summer/fall"> Summer/Fall <br>
+				<input id="fall" type="radio" name="contract" value="fall"> Fall <br>
+				<input id="summer" type="radio" name="contract" value="summer"> Summer <br>
+				<input id="winter" type="radio" name="contract" value="winter"> Winter <br>
+				<input id="no-contract" type="radio" name="contract" value="no contract"> No Contract <br>
+				<input id="contract-other" type="radio" name="contract" value="other"> Other
+			</form>
 			<ul>Furnished</ul>
 			<form>
-			    <input type="checkbox"  value="furnished"> Furnished<br>
-				<input type="checkbox"  value="not furnished"> Partially Furnished<br>
-				<input type="checkbox"  value="not furnished"> Not Furnished
+				<input id="furnished" type="radio" name="furnishings" value="furnished"> Furnished<br>
+				<input id="partial-furnished" type="radio" name="furnishings" value="not furnished"> Partially Furnished<br>
+				<input id="not-furnished" type="radio" name="furnishings" value="not furnished"> Not Furnished
 			</form>
+<!--
 			<ul>Availability Date</ul>
-			<form>
-				<input type="checkbox"  value="available now"> Available Now<br>
-			</form>
+				<input id="available-date" type="date">
+-->
 			<ul>Apt/House</ul>
 			<form>
-			    <input type="checkbox"  value="apartment"> Apartment<br>
-				<input type="checkbox"  value="house"> House
-			  </form>
-        
-		</div>
+				<input id="apartment-type" type="radio" name="type" value="apartment"> Apartment<br>
+				<input id="house-type" type="radio" name="type" value="house"> House
+			</form>
 
 		</div>
 
+		</div>
 
 <div class="sidebars">
 <div class="col-xs-9">
@@ -92,31 +88,62 @@
 
 					
 				
-						{% for house in house_list %}
-							<div class="house">
+						
+							<div class="house" id="house">
+							{% for house in house_list %}
 								<div class="houseListing">
-								<a href="/listing/{{ house.id }}">{{ house.name }}</a>
+								<a
+									class="house-listing"
+									data-distancebyu="{{house.distance_from_BYU}}"
+									data-name="{{house.name}}"
+									data-distanceuvu="{{house.distance_from_UVU}}"
+									data-pricerange="{{house.selling_price}}"
+									data-roommates="{{house.roommates}}"
+									data-gender="{{house.gender_choices}}"
+									data-roomtype="{{house.room_type}}"
+									data-contractlength="{{house.contract_length}}"
+									data-furnishingtype="{{house.furnishings_type}}"
+									data-buildingtype="{{house.building_type}}"
+									data-availabledate="{{house.availability_date|date:"Y-m-d"}}"
+									href="/listing/{{ house.id }}">
+									{{ house.name }}
+									</a>
 								</div>
+							{% endfor %}
 							</div>
-						{% endfor %}
+							
 					</div>
 				</div>
 					
 			</div>
 		</div><!-- house list -->
 
-
-		<div class="col-xs-6" style="width: 50.77%; margin-right: -23px; float: right;">
+		<div class="col-xs-6" style="width: 50.77%; margin-right: -23px; float: right;"><!-- apartment complex -->
 			<div class="row border">
 				<img src=" {% static 'apartment.png' %} " class="apt" alt="">
 				<p class="icontitle">Apartment Complex Listings:
 					<div id="listings">
 						{% for complex in complex_list %}
-							<div class="complex" id="complex">
+							<div class="complex">
 								{{ complex.name }}
 								<div class="listing" id="complex{{ complex.id }}">
 								{% for listing in complex.listing_set.all %}
-									<a class="address" href="/listing/{{ listing.id }}">{{ listing.address }}</a>
+									<a
+									class="apartment-listing"
+									data-distancebyu="{{listing.distance_from_BYU}}"
+									data-name="{{listing.name}}"
+									data-distanceuvu="{{listing.distance_from_UVU}}"
+									data-pricerange="{{listing.selling_price}}"
+									data-roommates="{{listing.roommates}}"
+									data-gender="{{listing.gender_choices}}"
+									data-roomtype="{{listing.room_type}}"
+									data-contractlength="{{listing.contract_length}}"
+									data-furnishingtype="{{listing.furnishings_type}}"
+									data-buildingtype="{{listing.building_type}}"
+									data-availabledate="{{listing.availability_date|date:"Y-m-d"}}"
+									href="/listing/{{ listing.id }}">
+									{{ listing.name }}
+									</a>
 									</br>
 								{% endfor %}
 								</div>
@@ -125,12 +152,7 @@
 						{% endfor %}
 					</div>
 			</div>
-		</div>
-
-		
-
-
-
+		</div><!-- end apartment complex -->
 	</div>
 </div>
 	
@@ -145,6 +167,8 @@
 
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script type="text/javascript" src="{% static 'js/base.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/complex_listing.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/single_listing.js' %}"></script>
 	<script  async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaKLjivuDKpR4yNtlz53u5B68-xq02VVU&libraries=places&callback=initMap"></script>
 	
 
