@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-from housing.local_settings import local_GoogleAPI_key
+
 from django.core.urlresolvers import reverse
 
 import googlemaps
