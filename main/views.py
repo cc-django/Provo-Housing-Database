@@ -65,6 +65,11 @@ class AptComplexDetailView(DetailView):
 	template_name = "both_list_views.html"
 	context_object_name = "complex"
 
+class AptComplexDisplayView(DetailView):
+	model = Listing 
+	template_name = "complex_detail_view.html"
+	context_object_name = "listing"
+
 
 class AptListingDetailView(DetailView):
 	model = Listing
