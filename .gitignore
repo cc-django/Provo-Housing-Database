@@ -7,3 +7,4 @@ staticfiles/
 housing.sublime-project
 *.orig
 temporary.txt
+mysql2pgsql.yml

@@ -160,9 +160,15 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 try:
 	from local_settings import *
 except Exception as e:
 	pass
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
+try:
+    from server_settings import *
+except Exception as e:
+    pass
+
