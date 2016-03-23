@@ -27,9 +27,10 @@
 
 			<div class="col-xs-12 col-sm-4">
 
-				<p id="address">
-					{{ listing.address }}<br>{{ listing.city }}, {{ listing.state }}
+				<p id="complexname">
+					{{ listing.complex_name }}
 				</p>
+				<p id='aptnum'>apt {{ listing.apt_number }}</p>
 				
 				<p id="dist">Distance to Campus(in miles): <img src="{% static "byus.png" %}" alt="" id="uvu">{{ listing.distance_from_BYU }} <img src="{% static "uvu.png" %}" alt="" id="uvu">{{ listing.distance_from_UVU}}</p>
 			</div>
@@ -50,7 +51,7 @@
 				</div>
 
 				<div class="col-xs-4 col-sm-1 ficon">
-					<p><img src="{% static "icons/house.png" %}" alt="" id="ic"></p>
+					<p><img src="{% static "icons/complex.png" %}" alt="" id="ic"></p>
 					<p class="deets" id="room">{{ listing.room_type }}</p>
 				</div>
 
