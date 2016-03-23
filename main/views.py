@@ -28,9 +28,6 @@ def housing_API_view(request):
 	return HttpResponse(output, content_type='application/json')
 
 
-
-
-
 def list_units_in_complex(request, pk):
 	print "pk %s: " % pk
 	listings = Listing.objects.filter(complex_name=pk)
@@ -44,7 +41,6 @@ def list_units_in_complex(request, pk):
 
 
 	return render(request, 'list_detail.html', context)
-
 
 
 
@@ -69,6 +65,11 @@ class AptComplexDetailView(DetailView):
 	template_name = "both_list_views.html"
 	context_object_name = "complex"
 
+class AptComplexDisplayView(DetailView):
+	model = Listing 
+	template_name = "complex_detail_view.html"
+	context_object_name = "listing"
+
 
 class AptListingDetailView(DetailView):
 	model = Listing
@@ -78,5 +79,5 @@ class AptListingDetailView(DetailView):
 
 
 class ListingCreateView(CreateView):
-    form_class = ListingForm
-    template_name = "post.html"
+	form_class = ListingForm
+	template_name = "post.html"

@@ -32,9 +32,9 @@ class Listing(models.Model):
 		)
 	room_type = models.CharField(max_length=7, choices=ROOM_TYPE, default=PRIVATE)
 
-	FURNISHED = 'Furnished' 
-	PARTIAL_FURNISHED = 'Partial Furnished' 
-	UNFURNISHED = 'Unfurnished' 
+	FURNISHED = 'Furnished'
+	PARTIAL_FURNISHED = 'Partial Furnished'
+	UNFURNISHED = 'Unfurnished'
 	FURNISHINGS = (
 		(FURNISHED,'Furnished'),
 		(PARTIAL_FURNISHED, 'Partial Furnished'),
@@ -50,6 +50,7 @@ class Listing(models.Model):
 	SUMMER_FALL = 'Summer/Fall'
 	FULL_YEAR = 'Full Year'
 	OTHER = 'Other'
+	NO_CONTRACT = 'No Contract'
 	CONTRACT_LENGTH = (
 		(FALL, 'Fall'),
 		(SUMMER, 'Summer'),
@@ -59,6 +60,7 @@ class Listing(models.Model):
 		(SUMMER_FALL, 'Summer/Fall'),
 		(FULL_YEAR, 'Full Year'),
 		(OTHER, 'Other'),
+		(NO_CONTRACT, 'No Contract'),
 		)
 	contract_length = models.CharField(max_length=15, choices=CONTRACT_LENGTH, default=FALL_WINTER)
 	
@@ -115,14 +117,11 @@ class Listing(models.Model):
 			full_address = "%s %s %s %s" % (self.address,self.city,self.state,"USA")
 
 
-		gmaps = googlemaps.Client(key=local_GoogleAPI_key)
+		gmaps = googlemaps.Client(key='AIzaSyBZgPnA1I6eFla6k5ChquP_Ej4XNKBHEZI')
 		latlng = gmaps.geocode(full_address)
-		print "88888"
-		print latlng
-		print "88888"
 		self.latitude = latlng[0]['geometry']['location']['lat'] 
 		self.longitude = latlng[0]['geometry']['location']['lng'] 
-		print self.longitude
+		
 	
 		googleAPI_dict_BYU = gmaps.distance_matrix((full_address), "Brigham Young University, Provo, UT 84602" )
 		googleAPI_dict_UVU = gmaps.distance_matrix((full_address), "Utah Valley University, 800 West University Parkway, Orem, UT 84058" )

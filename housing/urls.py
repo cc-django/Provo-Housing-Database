@@ -1,7 +1,7 @@
 
 from django.conf.urls import url, include
 from django.contrib import admin
-from main.views import home, AptComplexDetailView, AptListingDetailView, ListingCreateView
+from main.views import home, AptComplexDetailView, AptListingDetailView, ListingCreateView, AptComplexDisplayView
 from django.conf import settings 
 
 
@@ -11,6 +11,7 @@ urlpatterns = [
 	#url(r'^complex/$','main.views.appartment_complex'),
 	url(r'^complex/(?P<pk>\d+)/$', AptComplexDetailView.as_view()),
 	url(r'^listing/(?P<pk>\d+)/$', AptListingDetailView.as_view()),
+	url(r'^listings/(?P<pk>\d+)/$', AptComplexDisplayView.as_view()),
 	url(r'^listingcreate/$', ListingCreateView.as_view()),
 	url(r'^housing_api/', 'main.views.housing_API_view'),
 	url(r'^media/(?P<path>.*)/$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),

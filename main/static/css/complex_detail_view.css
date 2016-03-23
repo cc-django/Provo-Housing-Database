@@ -1,3 +1,18 @@
+#complexname {
+    text-align: left;
+    margin-left: 56px;
+    margin-top: 35px;
+    font-size: 32px;
+
+}
+#aptnum {
+    text-align: left;
+    margin-left: 142px;
+    margin-top: 60px;
+    font-size: 61px;
+    text-transform: capitalize;
+}
+
 
 html, body {
   height: 100%;
@@ -272,17 +287,7 @@ html, body {
     margin-left: 77px !important;
     margin-top: 69px !important;
 }
-#complexname {
-  font-size: 40px !important;
-    margin-left: 77px !important;
-    margin-top: 69px !important;
-}
-#aptnum {
-    margin-left: -100px;
-    margin-top: 60px;
-    font-size: 61px;
-    text-transform: capitalize;
-}
+
 
 #dist {
   font-size: 17px !important;
@@ -490,20 +495,7 @@ margin-left: 200px;
     font-size: 60px;
 
 }
-#complexname {
-    text-align: left;
-    margin-left: 56px;
-    margin-top: 35px;
-    font-size: 32px;
 
-}
-#aptnum {
-    text-align: left;
-    margin-left: 142px;
-    margin-top: 60px;
-    font-size: 61px;
-    text-transform: capitalize;
-}
 #room {
     margin-top: 21px;
     text-align: center;
