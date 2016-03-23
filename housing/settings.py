@@ -19,8 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ly&)u^=qd8q2doe11+4@^4!8muh6cg4^of^$9cr$rd(9174*h0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -105,16 +103,6 @@ SOCIALACCOUNT_PROVIDERS = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #allauth
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-	'default': {
-		'ENGINE': 'django.db.backends.mysql',
-
-	}
-}
 
 
 # Password validation
